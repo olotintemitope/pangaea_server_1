@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'namespace' => 'App\Http\Controllers\Api',
+], function () {
+    Route::post('/webhook/topic1', 'WebHookController@receive')->name('api.webhook_receive');
 });
